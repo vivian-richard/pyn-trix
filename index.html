@@ -1591,6 +1591,95 @@
       background: linear-gradient(135deg, #f0d399 0%, var(--beige) 100%);
     }
 
+    /* FAQ */
+    .faq {
+      padding: 1rem 1rem 2rem;
+      background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 100%);
+    }
+
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(225, 194, 139, 0.2);
+    }
+
+    .faq-item:hover {
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .faq-question {
+      padding: 1.25rem;
+      background: linear-gradient(135deg, var(--beige) 0%, #f0d399 100%);
+      color: var(--green-dark);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .faq-question:hover {
+      background: linear-gradient(135deg, #f0d399 0%, var(--beige) 100%);
+    }
+
+    .faq-icon {
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 500px;
+      padding: 1.25rem;
+    }
+
+    .faq-answer p {
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .faq-answer ul {
+      color: rgba(255, 255, 255, 0.8);
+      padding-left: 1.2rem;
+      margin: 0.5rem 0;
+    }
+
+    .faq-answer li {
+      margin-bottom: 0.3rem;
+    }
+
+    .faq-highlight {
+      background: linear-gradient(135deg, var(--beige-light) 0%, var(--beige) 100%);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-weight: 600;
+      color: var(--green-dark);
+    }
+
   </style>
 
 </head>
@@ -2229,6 +2318,280 @@
 
 
 
+      <!-- FAQ -->
+
+      <section id="faq" class="faq">
+
+        <div class="section-header">
+
+          <h2 class="section-title">Frequently Asked Questions</h2>
+
+          <p class="section-sub">
+
+            Common questions about our home automation and CCTV services.
+
+          </p>
+
+        </div>
+
+
+
+        <div class="faq-container">
+
+          <div class="faq-item">
+
+            <div class="faq-question" onclick="toggleFAQ(this)">
+
+              <span>What is included in home automation services?</span>
+
+              <span class="faq-icon">+</span>
+
+            </div>
+
+            <div class="faq-answer">
+
+              <p>Our home automation services include:</p>
+
+              <ul>
+
+                <li><span class="faq-highlight">Smart Lighting:</span> Automated and scene-based lighting control</li>
+
+                <li><span class="faq-highlight">Climate Control:</span> Smart AC and fan automation</li>
+
+                <li><span class="faq-highlight">Motorized Curtains:</span> Automated curtain and blind controls</li>
+
+                <li><span class="faq-highlight">Voice Integration:</span> Alexa and Google Assistant compatibility</li>
+
+                <li><span class="faq-highlight">Mobile App:</span> Complete control via smartphone/tablet</li>
+
+                <li><span class="faq-highlight">Scene Management:</span> Custom scenes for different activities</li>
+
+              </ul>
+
+            </div>
+
+          </div>
+
+
+
+          <div class="faq-item">
+
+            <div class="faq-question" onclick="toggleFAQ(this)">
+
+              <span>How much does a basic home automation setup cost?</span>
+
+              <span class="faq-icon">+</span>
+
+            </div>
+
+            <div class="faq-answer">
+
+              <p>Our pricing starts from <span class="faq-highlight">₹45,999</span> for a basic 2BHK setup, which includes:</p>
+
+              <ul>
+
+                <li>Smart lighting for 8-10 points</li>
+
+                <li>2-3 smart switches</li>
+
+                <li>Basic scene control</li>
+
+                <li>Mobile app setup</li>
+
+                <li>Installation and training</li>
+
+              </ul>
+
+              <p>Final pricing depends on your specific requirements and site survey. We provide customized quotes based on your home size and automation needs.</p>
+
+            </div>
+
+          </div>
+
+
+
+          <div class="faq-item">
+
+            <div class="faq-question" onclick="toggleFAQ(this)">
+
+              <span>What CCTV brands and features do you offer?</span>
+
+              <span class="faq-icon">+</span>
+
+            </div>
+
+            <div class="faq-answer">
+
+              <p>We work with trusted brands like <span class="faq-highlight">CP Plus, D-Link, and TP-Link</span>. Our CCTV systems include:</p>
+
+              <ul>
+
+                <li><span class="faq-highlight">HD/4K Recording:</span> High-quality video recording</li>
+
+                <li><span class="faq-highlight">Night Vision:</span> Clear footage in low light conditions</li>
+
+                <li><span class="faq-highlight">Mobile Viewing:</span> Remote access via smartphone app</li>
+
+                <li><span class="faq-highlight">Motion Detection:</span> Smart alerts and notifications</li>
+
+                <li><span class="faq-highlight">Cloud & Local Storage:</span> Multiple recording options</li>
+
+                <li><span class="faq-highlight">Weather Resistant:</span> Outdoor cameras with IP66 rating</li>
+
+              </ul>
+
+            </div>
+
+          </div>
+
+
+
+          <div class="faq-item">
+
+            <div class="faq-question" onclick="toggleFAQ(this)">
+
+              <span>Do you provide installation and after-sales support?</span>
+
+              <span class="faq-icon">+</span>
+
+            </div>
+
+            <div class="faq-answer">
+
+              <p>Yes! We provide complete end-to-end service:</p>
+
+              <ul>
+
+                <li><span class="faq-highlight">Free Site Survey:</span> Detailed assessment and planning</li>
+
+                <li><span class="faq-highlight">Professional Installation:</span> Neat wiring with minimal civil work</li>
+
+                <li><span class="faq-highlight">Training:</span> Complete system training for your family</li>
+
+                <li><span class="faq-highlight">Warranty:</span> Product warranty and installation guarantee</li>
+
+                <li><span class="faq-highlight">Support:</span> Post-installation technical support</li>
+
+                <li><span class="faq-highlight">Maintenance:</span> Regular maintenance services available</li>
+
+              </ul>
+
+            </div>
+
+          </div>
+
+
+
+          <div class="faq-item">
+
+            <div class="faq-question" onclick="toggleFAQ(this)">
+
+              <span>Can I control everything remotely when I'm not at home?</span>
+
+              <span class="faq-icon">+</span>
+
+            </div>
+
+            <div class="faq-answer">
+
+              <p>Absolutely! Our smart home systems are designed for remote access:</p>
+
+              <ul>
+
+                <li><span class="faq-highlight">Mobile Apps:</span> Control lights, cameras, and devices from anywhere</li>
+
+                <li><span class="faq-highlight">Live Camera Feed:</span> View CCTV cameras in real-time</li>
+
+                <li><span class="faq-highlight">Smart Notifications:</span> Get alerts for motion, door access, etc.</li>
+
+                <li><span class="faq-highlight">Voice Control:</span> Use Alexa/Google even when away</li>
+
+                <li><span class="faq-highlight">Scheduling:</span> Set automated schedules for lights and appliances</li>
+
+              </ul>
+
+            </div>
+
+          </div>
+
+
+
+          <div class="faq-item">
+
+            <div class="faq-question" onclick="toggleFAQ(this)">
+
+              <span>How long does the installation process take?</span>
+
+              <span class="faq-icon">+</span>
+
+            </div>
+
+            <div class="faq-answer">
+
+              <p>Installation timeline depends on the project scope:</p>
+
+              <ul>
+
+                <li><span class="faq-highlight">Basic Automation:</span> 5-7 days for 2-3BHK</li>
+
+                <li><span class="faq-highlight">CCTV Installation:</span> 4-6 hours for 4-8 cameras</li>
+
+                <li><span class="faq-highlight">Complete Package:</span> 2-3 days for full home automation + CCTV</li>
+
+                <li><span class="faq-highlight">Large Projects:</span> 3-5 days for villas or commercial spaces</li>
+
+              </ul>
+
+              <p>We ensure minimal disruption to your daily routine and clean up completely after installation.</p>
+
+            </div>
+
+          </div>
+
+
+
+          <div class="faq-item">
+
+            <div class="faq-question" onclick="toggleFAQ(this)">
+
+              <span>What areas in Hyderabad do you service?</span>
+
+              <span class="faq-icon">+</span>
+
+            </div>
+
+            <div class="faq-answer">
+
+              <p>We provide services across <span class="faq-highlight">Hyderabad and surrounding areas</span> including:</p>
+
+              <ul>
+
+                <li>Gachibowli, Kondapur, Madhapur</li>
+
+                <li>Banjara Hills, Jubilee Hills, Film Nagar</li>
+
+                <li>Kukatpally, Miyapur, Bachupally</li>
+
+                <li>Kompally, Secunderabad, Begumpet</li>
+
+                <li>Manikonda, Narsingi, Kokapet</li>
+
+                <li>And other areas within 50km radius</li>
+
+              </ul>
+
+              <p>Contact us to confirm service availability in your specific location.</p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+
       <!-- CONTACT -->
 
       <section id="contact" class="contact">
@@ -2420,6 +2783,22 @@ function openInstagram() {
   // Replace with your actual Instagram URL
   const instagramURL = 'https://www.instagram.com/pyntrix_automation/';
   window.open(instagramURL, '_blank');
+}
+
+// FAQ Toggle Function
+function toggleFAQ(element) {
+  const faqItem = element.parentElement;
+  const isActive = faqItem.classList.contains('active');
+  
+  // Close all other FAQ items
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.classList.remove('active');
+  });
+  
+  // Toggle current item
+  if (!isActive) {
+    faqItem.classList.add('active');
+  }
 }
 
 // PWA Service Worker Registration
