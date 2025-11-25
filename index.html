@@ -1483,6 +1483,76 @@
 
     }
 
+    /* GALLERY */
+    .gallery {
+      padding: 1rem 1rem 2rem;
+      background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 100%);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .gallery-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(225, 194, 139, 0.2);
+      cursor: pointer;
+    }
+
+    .gallery-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .gallery-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .gallery-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--beige);
+      margin-bottom: 0.5rem;
+    }
+
+    .gallery-text {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+
+    .gallery-btn {
+      background: linear-gradient(135deg, var(--beige) 0%, #f0d399 100%);
+      color: var(--green-dark);
+      padding: 0.75rem 1.5rem;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      display: inline-block;
+      border: none;
+      cursor: pointer;
+    }
+
+    .gallery-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(225, 194, 139, 0.4);
+      background: linear-gradient(135deg, #f0d399 0%, var(--beige) 100%);
+    }
+
   </style>
 
 </head>
@@ -2039,6 +2109,84 @@
 
 
 
+      <!-- GALLERY -->
+
+      <section id="gallery" class="gallery">
+
+        <div class="section-header">
+
+          <h2 class="section-title">Our Work Gallery</h2>
+
+          <p class="section-sub">
+
+            See our latest home automation and CCTV installations in action.
+
+          </p>
+
+        </div>
+
+
+
+        <div class="gallery-grid">
+
+          <div class="gallery-card" onclick="openInstagram()">
+
+            <span class="gallery-icon">📸</span>
+
+            <h3 class="gallery-title">Installation Photos</h3>
+
+            <p class="gallery-text">
+
+              Browse through our completed projects featuring smart lighting, CCTV setups, and automation systems.
+
+            </p>
+
+            <button class="gallery-btn">View on Instagram</button>
+
+          </div>
+
+
+
+          <div class="gallery-card" onclick="openInstagram()">
+
+            <span class="gallery-icon">🎥</span>
+
+            <h3 class="gallery-title">Demo Videos</h3>
+
+            <p class="gallery-text">
+
+              Watch live demonstrations of our smart home systems, voice controls, and security features in action.
+
+            </p>
+
+            <button class="gallery-btn">Watch Videos</button>
+
+          </div>
+
+
+
+          <div class="gallery-card" onclick="openInstagram()">
+
+            <span class="gallery-icon">🏠</span>
+
+            <h3 class="gallery-title">Before & After</h3>
+
+            <p class="gallery-text">
+
+              See the transformation of homes with our neat wiring, elegant panels, and seamless integrations.
+
+            </p>
+
+            <button class="gallery-btn">See Transformations</button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+
       <!-- CONTACT -->
 
       <section id="contact" class="contact">
@@ -2223,6 +2371,13 @@ function sendWhatsAppMessage(message) {
   
   // Open WhatsApp
   window.open(whatsappURL, '_blank');
+}
+
+// Instagram Gallery Function
+function openInstagram() {
+  // Replace with your actual Instagram URL
+  const instagramURL = 'https://www.instagram.com/pyntrix_automation/';
+  window.open(instagramURL, '_blank');
 }
 </script>
 
