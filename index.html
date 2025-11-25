@@ -103,6 +103,15 @@
   <!-- Canonical URL -->
   <link rel="canonical" href="https://pyntrix.in/">
   
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0b3a2a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="PYNTRIX">
+  <link rel="apple-touch-icon" href="logo-search-grid-2x(28).png">
+  <link rel="apple-touch-startup-image" href="logo-search-grid-2x(28).png">
+  
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="logo-search-grid-2x(28).png">
   <link rel="apple-touch-icon" href="logo-search-grid-2x(28).png">
@@ -683,6 +692,35 @@
 
       color: var(--beige-light);
 
+    }
+
+    .btn-install {
+      background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+      border: none;
+      color: white;
+      animation: pulse 2s infinite;
+    }
+
+    .btn-install:hover {
+      background: linear-gradient(135deg, #45a049 0%, #4CAF50 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(76, 175, 80, 0.3);
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(76, 175, 80, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
+    }
+
+    /* PWA Standalone Mode Styles */
+    .standalone .hero {
+      padding-top: 2rem; /* Account for removed browser UI */
+    }
+
+    /* iOS PWA Status Bar */
+    .standalone.ios {
+      padding-top: env(safe-area-inset-top);
     }
 
 
@@ -1663,6 +1701,10 @@
 
             <a href="#contact" class="btn btn-outline">Get a Free Quote</a>
 
+            <button id="install-btn" class="btn btn-install" onclick="installPWA()" style="display: none;">
+              📱 Install App
+            </button>
+
           </div>
 
 
@@ -2378,6 +2420,83 @@ function openInstagram() {
   // Replace with your actual Instagram URL
   const instagramURL = 'https://www.instagram.com/pyntrix_automation/';
   window.open(instagramURL, '_blank');
+}
+
+// PWA Service Worker Registration
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then((registration) => {
+        console.log('SW registered: ', registration);
+        
+        // Check for updates
+        registration.addEventListener('updatefound', () => {
+          console.log('New service worker available');
+          const newWorker = registration.installing;
+          newWorker.addEventListener('statechange', () => {
+            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+              // New version available, reload the page
+              window.location.reload();
+            }
+          });
+        });
+      })
+      .catch((registrationError) => {
+        console.log('SW registration failed: ', registrationError);
+      });
+  });
+}
+
+// Network status detection
+function updateNetworkStatus() {
+  if (navigator.onLine) {
+    document.body.classList.remove('offline');
+    document.body.classList.add('online');
+  } else {
+    document.body.classList.remove('online');
+    document.body.classList.add('offline');
+  }
+}
+
+window.addEventListener('online', updateNetworkStatus);
+window.addEventListener('offline', updateNetworkStatus);
+window.addEventListener('load', updateNetworkStatus);
+
+// PWA Install Prompt
+let deferredPrompt;
+const installBtn = document.getElementById('install-btn');
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Prevent Chrome 67 and earlier from automatically showing the prompt
+  e.preventDefault();
+  // Stash the event so it can be triggered later
+  deferredPrompt = e;
+  // Show install button if it exists
+  if (installBtn) {
+    installBtn.style.display = 'block';
+  }
+});
+
+function installPWA() {
+  if (deferredPrompt) {
+    // Show the prompt
+    deferredPrompt.prompt();
+    // Wait for the user to respond to the prompt
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the install prompt');
+      } else {
+        console.log('User dismissed the install prompt');
+      }
+      deferredPrompt = null;
+    });
+  }
+}
+
+// Detect if app is running in standalone mode (installed)
+if (window.matchMedia('(display-mode: standalone)').matches) {
+  console.log('Running in standalone mode');
+  document.body.classList.add('standalone');
 }
 </script>
 
