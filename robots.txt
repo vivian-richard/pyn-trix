@@ -1,4 +1,20 @@
 User-agent: *
 Allow: /
 
+# Priority pages for crawling
+Allow: /index.html
+Allow: /manifest.json
+Allow: /offline.html
+
+# Block unnecessary files
+Disallow: /sw.js
+Disallow: /*.png$
+Disallow: /*.jpg$
+Disallow: /*.jpeg$
+Disallow: /*.gif$
+
+# Crawl delay for polite crawling
+Crawl-delay: 1
+
+# Sitemap location
 Sitemap: https://pyntrix.in/sitemap.xml
